@@ -125,34 +125,40 @@ describe 'product page navigation', type: :feature do
         end
 
         context 'when title has a duplicate' do
-          it 'returns an error for title duplicate'
+          let!(:product) { FactoryGirl.create(:product, title: 'Shirt')}
+          it 'returns an error for title duplicate' do
+            click_button 'Create Product'
+
+            expect(page).to have_content 'Title has already been taken'
+          end
         end
 
         context 'when Image url is not valid' do
-          before do
+          it 'returns an error for Image url validity' do
             fill_in 'Image url', with: 'http://test.com/whatever'
             click_button 'Create Product'
-          end
 
-          it 'returns an error for Image url validity' do
             expect(page).to have_content 'Image url must be a URL for GIF, JPG or PNG image'
           end
         end
 
         context 'when price is not valid' do
-          before do
-            fill_in 'Price', with: '0.0'
-            click_button 'Create Product'
+          context 'and it is not a number' do
+            it 'returns an error for price invalid' do
+              fill_in 'Price', with: 'asdfa'
+              click_button 'Create Product'
+
+              expect(page).to have_content 'Price is not a number'
+            end
           end
 
-          it 'returns an error for price invalid' do
-            expect(page).to have_content 'Price must be greater than or equal to 0.01'
-          end
+          context 'and it is not more than 0' do
+            it 'returns an error for price invalid' do
+              fill_in 'Price', with: 0.0
+              click_button 'Create Product'
 
-          it 'will not return an error for other fields' do
-            expect(page).not_to have_content 'Title can\'t be blank'
-            expect(page).not_to have_content 'Description can\'t be blank'
-            expect(page).not_to have_content 'Image url can\'t be blank'
+              expect(page).to have_content 'Price must be greater than or equal to 0.01'
+            end
           end
         end
       end
