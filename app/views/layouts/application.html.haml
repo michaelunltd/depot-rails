@@ -2,9 +2,19 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Depot
+    %title PragProg Books Online Store
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{class: "#{controller.controller_name}"}
-    = yield
+    #banner
+      %span.title= @page_title
+    #columns
+      #side
+        %ul
+          %li= link_to 'Home', store_index_path
+          %li= link_to 'Questions', '/faq'
+          %li= link_to 'News', '/news'
+          %li= link_to 'Contact', '/contact'
+      #main
+        = yield
