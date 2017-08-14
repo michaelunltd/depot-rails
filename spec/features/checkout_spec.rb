@@ -25,10 +25,10 @@ describe 'Checkout Process', type: :feature do
       context 'and the user presses the Empty Cart button' do
         before do
           click_button 'Empty cart'
-          click_link 'OK'
+          page.driver.accept_js_confirms!
         end
 
-        it 'empties the cart' do
+        it 'empties the cart', js: true do
           expect(page).to have_content 'Your cart is currently empty'
         end
       end
