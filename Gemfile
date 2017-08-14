@@ -21,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use jquery for rails
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 # Use haml for rails
 gem 'haml-rails', '~> 0.9'
 # Use CoffeeScript for .coffee assets and views
