@@ -19,6 +19,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use jquery for rails
+gem 'jquery-rails'
+
 # Use haml for rails
 gem 'haml-rails', '~> 0.9'
 # Use CoffeeScript for .coffee assets and views
