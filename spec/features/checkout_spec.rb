@@ -24,7 +24,7 @@ describe 'Checkout Process', type: :feature do
 
       context 'and the user presses the Empty Cart button' do
         before do
-          click_button 'Empty cart'
+          click_button 'Empty Cart'
           page.driver.accept_js_confirms!
         end
 

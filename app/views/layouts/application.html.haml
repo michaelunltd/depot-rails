@@ -11,6 +11,8 @@
       %span.title= @page_title
     #columns
       #side
+        #cart
+          = render @cart if @cart
         %ul
           %li= link_to 'Home', store_index_path
           %li= link_to 'Questions', '/faq'
