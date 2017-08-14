@@ -13,6 +13,25 @@ describe 'Checkout Process', type: :feature do
       it 'diplays the product in the cart' do
         expect(page).to have_content 'TicketBase generic ticket'
       end
+
+      it 'displays the quantity of the product' do
+        expect(page).to have_content '1 ×'
+      end
+
+      it 'displays the total of the cart' do
+        expect(page).to have_content 'Total P 5.00'
+      end
+
+      context 'and the user presses the Empty Cart button' do
+        before do
+          click_button 'Empty cart'
+          click_link 'OK'
+        end
+
+        it 'empties the cart' do
+          expect(page).to have_content 'Your cart is currently empty'
+        end
+      end
     end
 
     context 'when there are multiple products in the store' do
