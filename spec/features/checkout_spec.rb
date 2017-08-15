@@ -77,6 +77,10 @@ describe 'Checkout Process', type: :feature do
       it 'places an order' do
         expect(page).to have_content 'Thank you for your order'
       end
+
+      it 'sends an email' do
+        expect(OrderMailer).to receive(:received)
+      end
     end
   end
 end
