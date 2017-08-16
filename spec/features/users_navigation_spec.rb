@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Users Navigation' do
+describe 'Users Navigation', type: :feature do
   describe 'Creating Users' do
     before do
       visit '/users/new'
