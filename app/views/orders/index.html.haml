@@ -1,5 +1,7 @@
 %h1 Listing orders
-
+- if flash[:alert] || flash[:notice]
+  %p#notice= flash[:alert] || flash[:notice]
+  
 %table
   %thead
     %tr

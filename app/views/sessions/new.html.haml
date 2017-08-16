@@ -1,15 +1,15 @@
 .depot_form
-  - if flash[:alert]
-    %p#notice= flash[:alert]
+  - if flash[:alert] || flash[:notice]
+    %p#notice= flash[:alert] || flash[:notice]
 
   = form_tag do
     %fieldset
       %legend Please Log In
       %div
-        = label_tag :name, 'Name: '
+        = label_tag :name, 'Name:'
         = text_field_tag :name, params[:name]
       %div
-        = label_tag :password, 'Password: '
+        = label_tag :password, 'Password:'
         = password_field_tag :password, params[:password]
       %div
         = submit_tag 'Login'
